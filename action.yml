@@ -1,0 +1,43 @@
+name: push-to-gitops
+description: pushes changes to gitops repository
+author: datamole-ai
+branding:
+  icon: 'git-pull-request'
+  color: 'green'
+
+inputs:
+  key:
+    description: 'update value of this key'
+    required: true
+    default: ''
+  value:
+    description: 'value to update'
+    required: true
+    default: ${{ github.sha }}
+  valuesFile:
+    description: 'path to values file'
+    required: true
+    default: ''
+  commitMessage:
+    description: 'Commit message'
+    required: true
+    default: ${{ github.event.head_commit.message }}
+runs:
+  using: "composite"
+  steps:
+  - shell: bash
+    env:
+      KEY: ${{ inputs.key }}
+      NEW_VALUE: ${{ inputs.value }}
+      VALUES_FILE: ${{ inputs.valuesFile }}
+      COMMIT_MESSAGE: ${{ inputs.commitMessage }}
+    
+    run: |
+      set -veuo pipefail
+      cd ./gitops/$GITOPS_PATH
+      git config user.name "$(git log -n 1 --pretty=format:%an)"
+      git config user.email "$(git log -n 1 --pretty=format:%ae)"
+      NEW_VALUE=$(echo $NEW_VALUE) yq e ''$KEY' = strenv(NEW_VALUE)' -i ${VALUES_FILE}
+      git add ${VALUES_FILE}
+      git commit -m "${COMMIT_MESSAGE}"
+      git push
