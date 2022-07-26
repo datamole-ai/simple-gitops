@@ -9,7 +9,6 @@ inputs:
   key:
     description: 'update value of this key'
     required: true
-    default: ''
   value:
     description: 'value to update'
     required: true
@@ -17,7 +16,6 @@ inputs:
   valuesFile:
     description: 'path to values file'
     required: true
-    default: ''
   commitMessage:
     description: 'Commit message'
     required: true
