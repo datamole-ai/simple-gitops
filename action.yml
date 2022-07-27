@@ -1,4 +1,4 @@
-name: push-to-gitops
+name: dtml-simple-gitops
 description: pushes changes to gitops repository
 author: datamole-ai
 branding:
