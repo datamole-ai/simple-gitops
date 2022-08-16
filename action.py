@@ -9,7 +9,7 @@ new_value = environ.get('NEW_VALUE')
 values_file = environ.get('VALUES_FILE')
 values_file_path = environ.get('VALUES_FILE_PATH')
 
-values = values_file_path + values_file
+values = values_file_path + '/' + values_file
 
 if exists(values):
   with open(values) as file:
