@@ -7,7 +7,7 @@ import yaml
 key = environ.get('KEY')
 new_value = environ.get('NEW_VALUE') 
 values_file = environ.get('VALUES_FILE')
-values_file_path = values_file('VALUES_FILE_PATH')
+values_file_path = environ.get('VALUES_FILE_PATH')
 
 values = values_file_path + values_file
 
