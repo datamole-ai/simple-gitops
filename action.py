@@ -15,7 +15,7 @@ if exists(values):
   with open(values) as file:
     data = yaml.safe_load(file)
 else:
-  print(format("⚠️ Values file - %s - does not exist.", values)); exit(1)
+  print("⚠️ Values file - %s - does not exist." % values); exit(1)
   
 
 for elem in data:
