@@ -9,10 +9,10 @@ new_value = environ.get('NEW_VALUE')
 values_file = environ.get('VALUES_FILE')
 values_file_path = values_file('VALUES_FILE_PATH')
 
-print(values_file_path+values_file)
+values = values_file_path + values_file
 
-if exists(values_file):
-  with open(values_file) as file:
+if exists(values):
+  with open(values) as file:
     data = yaml.safe_load(file)
 else:
   print("⚠️ Values file does not exist."); exit(1)
@@ -31,6 +31,6 @@ except NameError:
   print("⚠️ Key not found."); exit(1)
 
 
-with open(values_file, 'w') as file:
+with open(values, 'w') as file:
   yaml.dump(data, file, sort_keys=False)
 

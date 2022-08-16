@@ -32,7 +32,7 @@ runs:
     
     run: |
       set -veuo pipefail
-      cd ./gitops/$GITOPS_PATH
+      cd ./gitops
       export VALUES_FILE_PATH=$(pwd)
 
       git config user.name "$(git log -n 1 --pretty=format:%an)"
