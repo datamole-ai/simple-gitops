@@ -28,7 +28,7 @@ try:
     key_path[key] = new_value
 
 except NameError:
-  print("⚠️ Key not found."); exit(1)
+  print("⚠️ Key - %s -  not found." % key); exit(1)
 
 
 with open(values, 'w') as file:
