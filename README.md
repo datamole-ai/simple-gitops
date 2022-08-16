@@ -23,6 +23,4 @@ jobs:
           value: # new value. not mandatory. github.sha by default
           valuesFile: # path to values file in gitops repo
           commitMessage: # not mandatory. copies commit msg by default
-
-
 ```  
