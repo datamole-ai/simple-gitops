@@ -28,6 +28,6 @@ cd ./${VALUES_FILE%/*}
 git config user.name "$(git log -n 1 --pretty=format:%an)"
 git config user.email "$(git log -n 1 --pretty=format:%ae)"
 
-git add ${VALUES_FILE}
+git add ${VALUES_FILE##*/}
 git commit -m "${COMMIT_MESSAGE}"
 git push
