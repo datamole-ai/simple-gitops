@@ -30,13 +30,4 @@ runs:
       VALUES_FILE: ${{ inputs.valuesFile }}
       COMMIT_MESSAGE: ${{ inputs.commitMessage }}
     
-    run: |
-      set -veuo pipefail
-      cd ./gitops/$GITOPS_PATH
-      git config user.name "$(git log -n 1 --pretty=format:%an)"
-      git config user.email "$(git log -n 1 --pretty=format:%ae)"
-      NEW_VALUE=$(echo $NEW_VALUE) yq e ''$KEY' = strenv(NEW_VALUE)' -i ${VALUES_FILE}
-      [[ $(echo $?) -eq "1" ]] && echo "Something is wrong. Quitting."; exit 1
-      git add ${VALUES_FILE}
-      git commit -m "${COMMIT_MESSAGE}"
-      git push
+    run: bash ${{ github.action_path }}/action.sh
