@@ -21,7 +21,8 @@ else
   yq '.'$FULL_PATH' = "'$NEW_VALUE'"' -i ${VALUES_FILE}
 fi 
 
-echo ${VALUES_FILE%/*} 
+echo ${GITHUB_ACTOR}
+# echo ${GITHUB_ACTOR}
 
 cd ./${VALUES_FILE%/*} 
 
