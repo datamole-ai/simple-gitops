@@ -21,7 +21,7 @@ else
   yq '.'$FULL_PATH' = "'$NEW_VALUE'"' -i ${VALUES_FILE}
 fi 
 
-
+echo ${VALUES_FILE%/*} 
 
 cd ./${VALUES_FILE%/*} 
 
