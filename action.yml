@@ -25,7 +25,7 @@ runs:
   steps:
   - shell: bash
     env:
-      KEY: ${{ inputs.key }}
+      FULL_PATH: ${{ inputs.key }}
       NEW_VALUE: ${{ inputs.value }}
       VALUES_FILE: ${{ inputs.valuesFile }}
       COMMIT_MESSAGE: ${{ inputs.commitMessage }}
